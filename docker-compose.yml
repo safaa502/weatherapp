@@ -72,6 +72,16 @@ services:
         ipv4_address: 172.25.0.15
     depends_on:
       - spark-master
+  spark-streaming:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spark-streaming
+    depends_on:
+      - spark-master
+      - kafka
+    networks:
+      - kafkanet
 
 
 networks:
